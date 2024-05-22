@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Data Mahasiswa</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <h1>Data Mahasiswa</h1>
+    <button onclick="tampilkanData()">Tampilkan Data</button>
+    <button onclick="urutkanNama()">Urutkan Berdasarkan Nama</button>
+    <button onclick="urutkanTahun()">Urutkan Berdasarkan Tahun Lahir</button>
+    <button onclick="updateData()">Update Data</button>
+
+    <table id="data-table">
+      <thead>
+        <tr>
+          <th>Nama</th>
+          <th>Tahun Lahir</th>
+          <th>Handphone</th>
+        </tr>
+      </thead>
+      <tbody id="data-body"></tbody>
+    </table>
+    <nav>
+      <ul>
+        <li>
+          <a href="index.html"><button type="button">HOME</button></a>
+        </li>
+        <li>
+          <a href="profil.html"
+            ><button type="button">Profil Biodata</button></a
+          >
+        </li>
+      </ul>
+    </nav>
+
+    <script>
+      const NamaMhs = ["Budi", "Ani", "Wawan"];
+      const TahunLahir = [1995, 1997, 1996];
+      const HandphoneMhs = ["081234567890", "081987654321", "081345678912"];
+
+      function tampilkanData() {
+        const tbody = document.getElementById("data-body");
+        tbody.innerHTML = ""; // Clear existing data
+        for (let i = 0; i < NamaMhs.length; i++) {
+          let row = `<tr>
+                    <td>${NamaMhs[i]}</td>
+                    <td>${TahunLahir[i]}</td>
+                    <td>${HandphoneMhs[i]}</td>
+                </tr>`;
+          tbody.innerHTML += row;
+        }
+      }
+
+      function urutkanNama() {
+        const combined = NamaMhs.map((nama, index) => {
+          return {
+            nama: nama,
+            tahunLahir: TahunLahir[index],
+            handphone: HandphoneMhs[index],
+          };
+        });
+
+        combined.sort((a, b) => a.nama.localeCompare(b.nama));
+
+        for (let i = 0; i < combined.length; i++) {
+          NamaMhs[i] = combined[i].nama;
+          TahunLahir[i] = combined[i].tahunLahir;
+          HandphoneMhs[i] = combined[i].handphone;
+        }
+
+        tampilkanData();
+      }
+
+      function urutkanTahun() {
+        const combined = NamaMhs.map((nama, index) => {
+          return {
+            nama: nama,
+            tahunLahir: TahunLahir[index],
+            handphone: HandphoneMhs[index],
+          };
+        });
+
+        combined.sort((a, b) => a.tahunLahir - b.tahunLahir);
+
+        for (let i = 0; i < combined.length; i++) {
+          NamaMhs[i] = combined[i].nama;
+          TahunLahir[i] = combined[i].tahunLahir;
+          HandphoneMhs[i] = combined[i].handphone;
+        }
+
+        tampilkanData();
+      }
+
+      function updateData() {
+        const index = prompt(
+          "Masukkan indeks data yang ingin diupdate (0, 1, atau 2):"
+        );
+        if (index !== null && index >= 0 && index < NamaMhs.length) {
+          const newName = prompt("Masukkan nama baru:", NamaMhs[index]);
+          const newYear = prompt(
+            "Masukkan tahun lahir baru:",
+            TahunLahir[index]
+          );
+          const newPhone = prompt(
+            "Masukkan nomor handphone baru:",
+            HandphoneMhs[index]
+          );
+
+          if (newName !== null) NamaMhs[index] = newName;
+          if (newYear !== null) TahunLahir[index] = parseInt(newYear);
+          if (newPhone !== null) HandphoneMhs[index] = newPhone;
+
+          tampilkanData();
+        } else {
+          alert("Indeks tidak valid!");
+        }
+      }
+    </script>
+  </body>
+</html>

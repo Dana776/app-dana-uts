@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aplikasi Input Nilai Mahasiswa</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div>
+      <h1>Selamat Datang di Aplikasi Input Nilai</h1>
+    </div>
+    <div>
+      <form id="formNilai" onsubmit="return false;">
+        <label for="nim">NIM</label>
+        <input type="text" id="nim" /><br />
+        <label for="nama">Nama</label>
+        <input type="text" id="nama" /><br />
+        <label for="mata-kuliah">Mata Kuliah</label>
+        <select name="" id="mata-kuliah">
+          <option value="Diskrit">Diskrit</option>
+          <option value="Pendidikan Pancasila">Pendidikan Pancasila</option>
+          <option value="Arsitektur Komputer">Arsitektur Komputer</option>
+          <option value="Pemrograman Komputer">Pemrograman Komputer</option>
+          <option value="Praktek Pemrograman Komputer">
+            Praktek Pemrograman Komputer
+          </option>
+          <option value="Bahasa Indonesia">Bahasa Indonesia</option>
+          <option value="Kalkulus">Kalkulus</option>
+          <option value="Struktur Data dan Algoritma">
+            Struktur Data dan Algoritma
+          </option>
+          <option value="Sistem Operasi">Sistem Operasi</option>
+          <option value="Desain Perangkat Lunak">
+            Desain Perangkat Lunak
+          </option></select
+        ><br />
+        <label for="nilai">Nilai</label>
+        <input type="text" id="nilai" /><br />
+        <button type="submit" value="TAMPIL" onclick="tampil()">TAMPIL</button>
+        <button type="reset" value="RESET">RESET</button>
+      </form>
+    </div>
+    <div class="container" id="output"></div>
+    <nav>
+      <ul>
+        <li>
+          <a href="array.html"><button type="button">ARRAY DATA</button></a>
+        </li>
+        <li>
+          <a href="profil.html"
+            ><button type="button">Profil Biodata</button></a
+          >
+        </li>
+      </ul>
+    </nav>
+  </body>
+  <script src="js/script.js"></script>
+</html>
